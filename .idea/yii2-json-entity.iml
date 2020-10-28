@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$/../yii2-json">
+      <sourceFolder url="file://$MODULE_DIR$/../yii2-json/src" isTestSource="false" packagePrefix="dicr\json\" />
+      <sourceFolder url="file://$MODULE_DIR$/../yii2-json/tests" isTestSource="true" packagePrefix="dicr\tests\" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/bower-asset/inputmask" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/bower-asset/jquery" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/bower-asset/punycode" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/bower-asset/yii2-pjax" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/cebe/markdown" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/doctrine/instantiator" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/ezyang/htmlpurifier" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/myclabs/deep-copy" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/nikic/php-parser" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/phar-io/manifest" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/phar-io/version" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/phpdocumentor/reflection-common" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/phpdocumentor/reflection-docblock" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/phpdocumentor/type-resolver" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/phpspec/prophecy" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/phpunit/php-code-coverage" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/phpunit/php-file-iterator" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/phpunit/php-invoker" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/phpunit/php-text-template" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/phpunit/php-timer" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/phpunit/phpunit" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/sebastian/cli-parser" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/sebastian/code-unit" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/sebastian/code-unit-reverse-lookup" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/sebastian/comparator" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/sebastian/complexity" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/sebastian/diff" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/sebastian/environment" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/sebastian/exporter" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/sebastian/global-state" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/sebastian/lines-of-code" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/sebastian/object-enumerator" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/sebastian/object-reflector" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/sebastian/recursion-context" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/sebastian/resource-operations" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/sebastian/type" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/sebastian/version" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/symfony/polyfill-ctype" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/theseer/tokenizer" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/webmozart/assert" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/yiisoft/yii2" />
+      <excludeFolder url="file://$MODULE_DIR$/../yii2-json/vendor/yiisoft/yii2-composer" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

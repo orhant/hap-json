@@ -1,0 +1,42 @@
+{
+    "name": "dicr/yii2-json",
+    "type": "yii2-extension",
+    "license": "MIT",
+    "description": "Библиотека Json для Yii2",
+    "keywords": ["dicr", "yii2", "json", "entity"],
+    "homepage": "https://gitlab.com/dicr/yii2-json",
+    "support": {
+        "source": "https://gitlab.com/dicr/yii2-json.git"
+    },
+    "authors": [
+        {
+            "name": "Igor Tarasov",
+            "email": "develop@dicr.org",
+            "homepage": "http://dicr.org",
+            "role": "developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "dicr\\json\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "dicr\\tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "repositories": [
+        {"type": "composer", "url": "https://asset-packagist.org"}
+    ],
+    "require": {
+        "php": "~7.3",
+        "yiisoft/yii2": "~2.0"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-master",
+        "phpunit/phpunit": "~9.4"
+    }
+}
