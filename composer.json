@@ -2,7 +2,7 @@
     "name": "dicr/yii2-json",
     "type": "yii2-extension",
     "license": "MIT",
-    "description": "Библиотека Json для Yii2",
+    "description": "Модель данных Json для Yii2",
     "keywords": ["dicr", "yii2", "json", "entity"],
     "homepage": "https://gitlab.com/dicr/yii2-json",
     "support": {
@@ -29,11 +29,13 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "repositories": [
+        {"type": "gitlab", "url": "https://gitlab.com/dicr/yii2-validate.git"},
         {"type": "composer", "url": "https://asset-packagist.org"}
     ],
     "require": {
         "php": "~7.3",
-        "yiisoft/yii2": "~2.0"
+        "yiisoft/yii2": "~2.0",
+        "dicr/yii2-validate": "~2.2"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master",
