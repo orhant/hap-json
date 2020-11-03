@@ -18,6 +18,7 @@ use yii\helpers\Inflector;
 use function array_search;
 use function in_array;
 use function is_array;
+use function is_callable;
 use function is_object;
 use function is_scalar;
 use function is_string;
@@ -82,8 +83,9 @@ abstract class JsonEntity extends Model
     /**
      * Пользовательские функции, переопределяющие функционал конвертирования значений аттрибутов в JSON.
      *
-     * @return callable[] карта [attribute => function($attributeValue, string $attribute, Model $model)]
+     * @return array карта [attribute => function($attributeValue, string $attribute, Model $model)|mixed]
      * Функция должна принимать значение аттрибута модели и возвращать значение для JSON.
+     * Вместо функции может быть просто JSON-значение аттрибута.
      * @noinspection PhpMethodMayBeStaticInspection
      */
     public function attributesToJson() : array
@@ -145,10 +147,15 @@ abstract class JsonEntity extends Model
      */
     protected function value2json(string $attribute, $value)
     {
-        // используем пользовательскую функцию
+        // используем пользовательское конвертирование значений
         $map = $this->attributesToJson();
+
         if (isset($map[$attribute])) {
-            return $map[$attribute]($value, $attribute, $this);
+            return is_callable($map[$attribute]) ?
+                // вызываем функцию
+                $map[$attribute]($value, $attribute, $this) :
+                // используем значение
+                $map[$attribute];
         }
 
         // скалярные и пустые значения возвращаем как есть
