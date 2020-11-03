@@ -15,6 +15,7 @@ use yii\base\Exception;
 use yii\base\Model;
 use yii\helpers\Inflector;
 
+use function array_key_exists;
 use function array_search;
 use function in_array;
 use function is_array;
@@ -39,6 +40,8 @@ abstract class JsonEntity extends Model
      *
      * Необходимо определить только те аттрибуты, название которых отличается
      * от названия полей в данных.
+     *
+     * Если аттрибуту соответствует поле JSON null или "", то аттрибут не выводится в JSON.
      *
      * По умолчанию составляет карту CamelCase => snake_case. Если это не нужно, то переопределить этот метод в
      * наследнике.
@@ -113,7 +116,7 @@ abstract class JsonEntity extends Model
      * @return object переданный entity
      * @throws Exception
      */
-    protected static function createEntity(string $class, $data) : object
+    protected static function createChildEntity(string $class, $data) : object
     {
         // создаем объект
         $entity = new $class();
@@ -223,12 +226,12 @@ abstract class JsonEntity extends Model
         if ($class !== null) {
             if (is_string($class)) {
                 // создаем вложенный объект JsonEntity
-                $data = static::createEntity($class, $data);
+                $data = static::createChildEntity($class, $data);
             } elseif (is_array($class) && ! empty($class[0])) {
                 // массив объектов JsonEntity
                 foreach ($data as &$v) {
                     // создаем вложенный объект - элемент массива
-                    $v = static::createEntity($class[0], $v);
+                    $v = static::createChildEntity($class[0], $v);
                 }
 
                 unset($v);
@@ -258,13 +261,28 @@ abstract class JsonEntity extends Model
         // обходим все данные
         foreach ($json as $field => $d) {
             // получаем название аттрибута по имени поля данных в карте аттрибутов
-            $attribute = (string)(array_search($field, $map, true) ?: $field);
-            if (! $skipUnknown && ! in_array($attribute, $attributes, true)) {
+            $attribute = array_search($field, $map, true);
+            if ($attribute === false) {
+                // если аттрибут помечен как пропускаемый
+                if (array_key_exists($field, $map) && ((string)$map[$field]) === '') {
+                    continue;
+                }
+
+                $attribute = $field;
+            }
+
+            // если аттрибут не найден
+            if (! in_array($attribute, $attributes, true)) {
+                // пропускаем неизвестные
+                if ($skipUnknown) {
+                    continue;
+                }
+
                 throw new Exception('Неизвестный аттрибут: ' . $attribute);
             }
 
             // конвертируем и устанавливаем значение
-            $data[$attribute] = $this->json2value($attribute, $d);
+            $data[(string)$attribute] = $this->json2value($attribute, $d);
         }
 
         if (! empty($data)) {
@@ -283,14 +301,23 @@ abstract class JsonEntity extends Model
         $map = $this->attributeFields();
 
         foreach ($this->getAttributes() as $attribute => $value) {
+            // получаем название поля из карты аттрибутов
+            if (array_key_exists($attribute, $map)) {
+                $field = $map[$attribute];
+
+                // аттрибут пропускаемый
+                if ($field === null || $field === '') {
+                    continue;
+                }
+            } else {
+                $field = $attribute;
+            }
+
             // получаем значение данных
             $data = $this->value2json($attribute, $value);
 
             // пропускаем пустые значения
             if ($data !== null) {
-                // получаем название поля данных
-                $field = (string)($map[$attribute] ?? $attribute);
-
                 // сохраняем значение данных
                 $json[$field] = $data;
             }
