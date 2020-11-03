@@ -37,20 +37,18 @@ class TestJsonEntity extends JsonEntity
     /**
      * @inheritDoc
      */
-    public static function attributeFields() : array
+    public function attributeFields() : array
     {
-        $fields = parent::attributeFields();
-
         // тестируем подмену названия поля в данных JSON
-        $fields['my_name'] = 'name';
-
-        return $fields;
+        return array_merge(parent::attributeFields(), [
+            'my_name' => 'name'
+        ]);
     }
 
     /**
      * @inheritDoc
      */
-    public static function attributeEntities() : array
+    public function attributeEntities() : array
     {
         return [
             // дочерний объект

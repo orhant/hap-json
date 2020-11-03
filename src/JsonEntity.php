@@ -42,9 +42,11 @@ abstract class JsonEntity extends Model
      * По умолчанию составляет карту CamelCase => snake_case. Если это не нужно, то переопределить этот метод в
      * наследнике.
      *
+     * Метод не может быть статическим, потому что базируется на динамическом Model::attributes()
+     *
      * @return array [attribute => json field]
      */
-    public static function attributeFields() : array
+    public function attributeFields() : array
     {
         /** @var string[] $fields кжш значения */
         static $fields = [];
@@ -53,7 +55,7 @@ abstract class JsonEntity extends Model
         if (! isset($fields[$class])) {
             $fields[$class] = [];
 
-            foreach (static::instance()->attributes() as $attribute) {
+            foreach ($this->attributes() as $attribute) {
                 $field = Inflector::camel2id($attribute, '_');
                 if ($field !== $attribute) {
                     $fields[$class][$attribute] = $field;
@@ -72,7 +74,7 @@ abstract class JsonEntity extends Model
      * - string $class - класс объекта JsonEntity в который конвертируются данные
      * - array [$class] - класс объекта JsonEntity элемента массива
      */
-    public static function attributeEntities() : array
+    public function attributeEntities() : array
     {
         return [];
     }
@@ -82,8 +84,9 @@ abstract class JsonEntity extends Model
      *
      * @return callable[] карта [attribute => function($attributeValue, string $attribute, Model $model)]
      * Функция должна принимать значение аттрибута модели и возвращать значение для JSON.
+     * @noinspection PhpMethodMayBeStaticInspection
      */
-    public static function attributesToJson() : array
+    public function attributesToJson() : array
     {
         return [];
     }
@@ -93,8 +96,9 @@ abstract class JsonEntity extends Model
      *
      * @return callable[] карта [attribute => function($jsonValue, string $attribute, Model $model)]
      * Функция должна принимать значение JSON и конвертировать его в значение аттрибута.
+     * @noinspection PhpMethodMayBeStaticInspection
      */
-    public static function attributesFromJson() : array
+    public function attributesFromJson() : array
     {
         return [];
     }
@@ -142,7 +146,7 @@ abstract class JsonEntity extends Model
     protected function value2json(string $attribute, $value)
     {
         // используем пользовательскую функцию
-        $map = static::attributesToJson();
+        $map = $this->attributesToJson();
         if (isset($map[$attribute])) {
             return $map[$attribute]($value, $attribute, $this);
         }
@@ -194,7 +198,7 @@ abstract class JsonEntity extends Model
     protected function json2value(string $attribute, $data)
     {
         // пользовательская функция
-        $map = static::attributesFromJson();
+        $map = $this->attributesFromJson();
         if (isset($map[$attribute])) {
             return $map[$attribute]($data, $attribute, $this);
         }
@@ -205,7 +209,7 @@ abstract class JsonEntity extends Model
         }
 
         // карта типов вложенных значений
-        $entities = static::attributeEntities();
+        $entities = $this->attributeEntities();
         $class = $entities[$attribute] ?? null;
 
         // если задано конвертирование значения аттрибута
@@ -239,7 +243,7 @@ abstract class JsonEntity extends Model
     public function setJson(array $json, bool $skipUnknown = true) : void
     {
         // карта соответствия полей данных аттрибутам
-        $map = static::attributeFields();
+        $map = $this->attributeFields();
         $attributes = $this->attributes();
 
         $data = [];
@@ -269,7 +273,7 @@ abstract class JsonEntity extends Model
     public function getJson() : array
     {
         $json = [];
-        $map = static::attributeFields();
+        $map = $this->attributeFields();
 
         foreach ($this->getAttributes() as $attribute => $value) {
             // получаем значение данных

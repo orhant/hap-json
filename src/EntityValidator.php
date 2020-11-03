@@ -114,7 +114,7 @@ class EntityValidator extends AbstractValidator
         if ($this->class === null) {
             // пытаемся получить класс из описания JsonEntity
             if ($model instanceof JsonEntity) {
-                $this->class = $model::attributeEntities()[$attribute] ?? null;
+                $this->class = $model->attributeEntities()[$attribute] ?? null;
             }
 
             // без класса работать нельзя

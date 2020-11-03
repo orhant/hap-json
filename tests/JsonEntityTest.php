@@ -23,7 +23,7 @@ class JsonEntityTest extends TestCase
     public function testAttributeFields() : void
     {
         $sampleFields = TestJsonEntity::sampleAttributeFields();
-        $actualFields = TestJsonEntity::attributeFields();
+        $actualFields = (new TestJsonEntity())->attributeFields();
 
         self::assertEquals($sampleFields, $actualFields);
     }
