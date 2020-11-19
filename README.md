@@ -56,7 +56,7 @@ class Customer extends dicr\json\JsonEntity
     /** @var ?string */
     public $fio;
 
-    /** ?Phone один мобильный телефон */
+    /** @var ?Phone один мобильный телефон */
     public $cellular;
 
     /** @var Phone[]|null рабочие телефоны */
