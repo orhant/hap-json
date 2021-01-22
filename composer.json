@@ -33,7 +33,7 @@
         {"type": "gitlab", "url": "https://gitlab.com/dicr/yii2-validate.git"}
     ],
     "require": {
-        "php": "~7.4 || ~8.0",
+        "php": "~7.4 || ~8.0.1",
         "yiisoft/yii2": "~2.0",
         "dicr/yii2-validate": "~2.2"
     },
