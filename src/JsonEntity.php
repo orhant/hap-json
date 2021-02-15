@@ -51,7 +51,7 @@ abstract class JsonEntity extends Model
      *
      * @return array [attribute => json field]
      */
-    public function attributeFields() : array
+    public function attributeFields(): array
     {
         /** @var string[] $fields кжш значения */
         static $fields = [];
@@ -79,7 +79,7 @@ abstract class JsonEntity extends Model
      * - string $class - класс объекта JsonEntity в который конвертируются данные
      * - array [$class] - класс объекта JsonEntity элемента массива
      */
-    public function attributeEntities() : array
+    public function attributeEntities(): array
     {
         return [];
     }
@@ -92,7 +92,7 @@ abstract class JsonEntity extends Model
      * Вместо функции может быть просто JSON-значение аттрибута.
      * @noinspection PhpMethodMayBeStaticInspection
      */
-    public function attributesToJson() : array
+    public function attributesToJson(): array
     {
         return [];
     }
@@ -104,7 +104,7 @@ abstract class JsonEntity extends Model
      * Функция должна принимать значение JSON и конвертировать его в значение аттрибута.
      * @noinspection PhpMethodMayBeStaticInspection
      */
-    public function attributesFromJson() : array
+    public function attributesFromJson(): array
     {
         return [];
     }
@@ -117,7 +117,7 @@ abstract class JsonEntity extends Model
      * @return object переданный entity
      * @throws Exception
      */
-    protected static function createChildEntity(string $class, $data) : object
+    protected static function createChildEntity(string $class, $data): object
     {
         // создаем объект
         $entity = new $class();
@@ -251,7 +251,7 @@ abstract class JsonEntity extends Model
      * @param bool $skipUnknown пропускать неизвестные аттрибуты (иначе exception)
      * @throws Exception
      */
-    public function setJson(array $json, bool $skipUnknown = true) : void
+    public function setJson(array $json, bool $skipUnknown = true): void
     {
         // карта соответствия полей данных аттрибутам
         $map = $this->attributeFields();
@@ -296,7 +296,7 @@ abstract class JsonEntity extends Model
      *
      * @return array данные JSON
      */
-    public function getJson() : array
+    public function getJson(): array
     {
         $json = [];
         $map = $this->attributeFields();
