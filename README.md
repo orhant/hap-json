@@ -126,7 +126,6 @@ class Customer extends dicr\json\JsonEntity
 Пример использования:
 
 ```php
-
 // создаем модель и загружаем из JSON
 $customer = new Customer([
     'json' => Json::decode($string)

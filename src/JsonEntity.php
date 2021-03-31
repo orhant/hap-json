@@ -10,7 +10,9 @@ declare(strict_types = 1);
 
 namespace dicr\json;
 
+use JsonSerializable;
 use RuntimeException;
+use yii\base\Arrayable;
 use yii\base\Exception;
 use yii\base\Model;
 use yii\helpers\Inflector;
@@ -34,7 +36,7 @@ use function is_string;
  *
  * @property array $json конфигурация объекта в виде JSON
  */
-abstract class JsonEntity extends Model
+abstract class JsonEntity extends Model implements JsonSerializable
 {
     /**
      * Карта соответствия названий аттрибутов названиям полей данных JSON.
@@ -167,15 +169,19 @@ abstract class JsonEntity extends Model
             return $value;
         }
 
-        // вложенный JsonEntity
+        // конвертируем известные типы объектов
         if ($value instanceof self) {
-            return $value->getJson();
-        }
-
-        // объекты
-        if ($value instanceof Model) {
+            // вложенный объект
+            $value = $value->getJson();
+        } elseif ($value instanceof JsonSerializable) {
+            // Json Serializable сам предоставляет данные
+            $value = $value->jsonSerialize();
+        } elseif ($value instanceof Model) {
             // модель конвертируем в значение характеристик
             $value = $value->attributes();
+        } elseif ($value instanceof Arrayable) {
+            // имеем метод toArray
+            $value = $value->toArray();
         } elseif (is_object($value)) {
             // остальные объекты конвертируем в массив
             $value = (array)$value;
@@ -325,5 +331,13 @@ abstract class JsonEntity extends Model
         }
 
         return $json;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function jsonSerialize(): array
+    {
+        return $this->getJson();
     }
 }
