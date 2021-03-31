@@ -12,7 +12,6 @@ namespace dicr\json;
 
 use JsonSerializable;
 use RuntimeException;
-use yii\base\Arrayable;
 use yii\base\Exception;
 use yii\base\Model;
 use yii\helpers\Inflector;
@@ -22,7 +21,6 @@ use function array_search;
 use function in_array;
 use function is_array;
 use function is_callable;
-use function is_object;
 use function is_scalar;
 use function is_string;
 
@@ -169,22 +167,14 @@ abstract class JsonEntity extends Model implements JsonSerializable
             return $value;
         }
 
-        // конвертируем известные типы объектов
+        // вложенный объект
         if ($value instanceof self) {
-            // вложенный объект
-            $value = $value->getJson();
-        } elseif ($value instanceof JsonSerializable) {
-            // Json Serializable сам предоставляет данные
-            $value = $value->jsonSerialize();
-        } elseif ($value instanceof Model) {
-            // модель конвертируем в значение характеристик
-            $value = $value->attributes();
-        } elseif ($value instanceof Arrayable) {
-            // имеем метод toArray
-            $value = $value->toArray();
-        } elseif (is_object($value)) {
-            // остальные объекты конвертируем в массив
-            $value = (array)$value;
+            return $value->getJson();
+        }
+
+        // Json Serializable сам предоставляет данные
+        if ($value instanceof JsonSerializable) {
+            return $value->jsonSerialize();
         }
 
         // массив обходим рекурсивно
