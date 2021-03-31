@@ -47,9 +47,7 @@ abstract class JsonEntity extends Model implements JsonSerializable
      * По умолчанию составляет карту CamelCase => snake_case. Если это не нужно, то переопределить этот метод в
      * наследнике.
      *
-     * Метод не может быть статическим, потому что базируется на динамическом Model::attributes()
-     *
-     * @return array [attribute => json field]
+     * @return string[] [attribute => json field]
      */
     public function attributeFields(): array
     {
@@ -74,7 +72,7 @@ abstract class JsonEntity extends Model implements JsonSerializable
     /**
      * Классы дочерних объектов для конвертирования из JSON в значения характеристик.
      *
-     * @return array [attribute => string|array[1]|callable $type]
+     * @return string[]|string[][] [attribute => string|array[1]]
      * Возвращает типы объектов аттрибутов:
      * - string $class - класс объекта JsonEntity в который конвертируются данные
      * - array [$class] - класс объекта JsonEntity элемента массива
@@ -87,7 +85,7 @@ abstract class JsonEntity extends Model implements JsonSerializable
     /**
      * Пользовательские функции, переопределяющие функционал конвертирования значений аттрибутов в JSON.
      *
-     * @return array карта [attribute => function($attributeValue, string $attribute, Model $model)|mixed]
+     * @return callable[] карта [attribute => function($attributeValue, string $attribute, Model $model)|mixed]
      * Функция должна принимать значение аттрибута модели и возвращать значение для JSON.
      * Вместо функции может быть просто JSON-значение аттрибута.
      * @noinspection PhpMethodMayBeStaticInspection
