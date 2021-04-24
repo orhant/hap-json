@@ -40,7 +40,7 @@ class EntityValidator extends AbstractValidator
      * Подробности:
      * @link JsonEntity::attributeEntities()
      */
-    public $class;
+    private $class;
 
     /**
      * Проверка и конвертирование объекта значения.
@@ -106,20 +106,14 @@ class EntityValidator extends AbstractValidator
 
     /**
      * @inheritDoc
-     * @throws InvalidConfigException
      */
-    public function validateAttribute($model, $attribute) : void
+    public function validateAttribute($model, $attribute): void
     {
-        // проверяем наличие класса
-        if ($this->class === null) {
-            // пытаемся получить класс из описания JsonEntity
-            if ($model instanceof JsonEntity) {
-                $this->class = $model->attributeEntities()[$attribute] ?? null;
-            }
-
-            // без класса работать нельзя
-            if ($this->class === null) {
-                throw new InvalidConfigException('Не задан класс entity и модель не является JsonEntity');
+        // обновляем класс из аттрибутов модели
+        if ($model instanceof JsonEntity) {
+            $entities = $model->attributeEntities();
+            if (isset($entities[$attribute])) {
+                $this->class = $entities[$attribute];
             }
         }
 

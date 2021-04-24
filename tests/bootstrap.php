@@ -10,10 +10,10 @@
 declare(strict_types = 1);
 
 /** string */
-define('YII_ENV', 'dev');
+const YII_ENV = 'dev';
 
 /** bool */
-define('YII_DEBUG', true);
+const YII_DEBUG = true;
 
 require_once(dirname(__DIR__) . '/vendor/autoload.php');
 require_once(dirname(__DIR__) . '/vendor/yiisoft/yii2/Yii.php');

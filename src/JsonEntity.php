@@ -259,7 +259,7 @@ abstract class JsonEntity extends Model implements JsonSerializable
             $attribute = array_search($field, $map, true);
             if ($attribute === false) {
                 // если аттрибут помечен как пропускаемый
-                if (array_key_exists($field, $map) && ((string)$map[$field]) === '') {
+                if (array_key_exists($field, $map) && $map[$field] === '') {
                     continue;
                 }
 
