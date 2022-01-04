@@ -76,6 +76,7 @@ abstract class JsonEntity extends Model implements JsonSerializable
      * Возвращает типы объектов аттрибутов:
      * - string $class - класс объекта JsonEntity в который конвертируются данные
      * - array [$class] - класс объекта JsonEntity элемента массива
+     * @noinspection PhpDocSignatureInspection
      */
     public function attributeEntities(): array
     {
@@ -115,7 +116,7 @@ abstract class JsonEntity extends Model implements JsonSerializable
      * @return object переданный entity
      * @throws Exception
      */
-    protected static function createChildEntity(string $class, $data): object
+    protected static function createChildEntity(string $class, object|array $data): object
     {
         // создаем объект
         $entity = new $class();
@@ -147,7 +148,7 @@ abstract class JsonEntity extends Model implements JsonSerializable
      * @param mixed $value значение характеристики
      * @return mixed значение данных для JSON
      */
-    protected function value2json(string $attribute, $value)
+    protected function value2json(string $attribute, mixed $value): mixed
     {
         // используем пользовательское конвертирование значений
         $map = $this->attributesToJson();
@@ -161,7 +162,7 @@ abstract class JsonEntity extends Model implements JsonSerializable
         }
 
         // скалярные и пустые значения возвращаем как есть
-        if ($value === null || $value === '' || $value === [] || is_scalar($value) || empty($value)) {
+        if (empty($value) || is_scalar($value)) {
             return $value;
         }
 
@@ -197,10 +198,9 @@ abstract class JsonEntity extends Model implements JsonSerializable
      *
      * @param string $attribute название аттрибута
      * @param mixed $data данные
-     * @return mixed
      * @throws Exception
      */
-    protected function json2value(string $attribute, $data)
+    protected function json2value(string $attribute, mixed $data): mixed
     {
         // пользовательская функция
         $map = $this->attributesFromJson();
@@ -209,7 +209,7 @@ abstract class JsonEntity extends Model implements JsonSerializable
         }
 
         // пустые и скалярные данные возвращаем как есть
-        if ($data === null || $data === '' || $data === [] || is_scalar($data) || empty($data)) {
+        if (empty($data) || is_scalar($data)) {
             return $data;
         }
 
@@ -243,9 +243,10 @@ abstract class JsonEntity extends Model implements JsonSerializable
      *
      * @param array $json данные конфигурации
      * @param bool $skipUnknown пропускать неизвестные аттрибуты (иначе exception)
+     * @return $this
      * @throws Exception
      */
-    public function setJson(array $json, bool $skipUnknown = true): void
+    public function setJson(array $json, bool $skipUnknown = true): static
     {
         // карта соответствия полей данных аттрибутам
         $map = $this->attributeFields();
@@ -283,6 +284,8 @@ abstract class JsonEntity extends Model implements JsonSerializable
         if (! empty($data)) {
             $this->setAttributes($data, false);
         }
+
+        return $this;
     }
 
     /**

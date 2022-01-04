@@ -17,9 +17,6 @@ use PHPUnit\Framework\TestCase;
  */
 class JsonEntityTest extends TestCase
 {
-    /**
-     *
-     */
     public function testAttributeFields() : void
     {
         $sampleFields = TestJsonEntity::sampleAttributeFields();
@@ -28,9 +25,6 @@ class JsonEntityTest extends TestCase
         self::assertEquals($sampleFields, $actualFields);
     }
 
-    /**
-     *
-     */
     public function testGetJson() : void
     {
         $sampleJson = TestJsonEntity::sampleJson();
@@ -38,9 +32,6 @@ class JsonEntityTest extends TestCase
         self::assertEquals($sampleJson, $actualJson);
     }
 
-    /**
-     *
-     */
     public function testSetJson() : void
     {
         $sampleEntity = TestJsonEntity::sampleEntity();

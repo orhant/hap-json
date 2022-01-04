@@ -40,17 +40,16 @@ class EntityValidator extends AbstractValidator
      * Подробности:
      * @link JsonEntity::attributeEntities()
      */
-    private $class;
+    private string|array|null $class = null;
 
     /**
      * Проверка и конвертирование объекта значения.
      *
      * @param object|array $val значение
      * @param string $class требуемый класс объекта
-     * @return mixed
      * @throws ValidateException
      */
-    private static function checkVal($val, string $class)
+    private static function checkVal(object|array $val, string $class): mixed
     {
         // конвертируем из конфига
         if (is_array($val)) {
@@ -74,7 +73,7 @@ class EntityValidator extends AbstractValidator
      * @inheritDoc
      * @throws InvalidConfigException
      */
-    public function parseValue($value)
+    public function parseValue($value): mixed
     {
         // для пустых значений возвращаем null
         if ($value === null || $value === '' || $value === []) {

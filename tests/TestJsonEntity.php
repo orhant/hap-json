@@ -16,23 +16,22 @@ use dicr\json\JsonEntity;
  */
 class TestJsonEntity extends JsonEntity
 {
-    /** @var ?int */
-    public $id;
+    public ?int $id = null;
 
     /** @var ?int[] */
-    public $ids;
+    public ?array $ids = null;
 
     /** @var ?int аттрибут с другим названием в JSON */
-    public $my_name;
+    public ?int $my_name = null;
 
     /** @var ?string аттрибут в CamelCase */
-    public $entityTitle;
+    public ?string $entityTitle = null;
 
     /** @var ?self дочерний объект */
-    public $child;
+    public ?TestJsonEntity $child = null;
 
     /** @var ?self[] массив дочерних объектов */
-    public $list;
+    public ?array $list = null;
 
     /**
      * @inheritDoc

@@ -12,7 +12,7 @@
         {
             "name": "Igor Tarasov",
             "email": "develop@dicr.org",
-            "homepage": "http://dicr.org",
+            "homepage": "https://dicr.org",
             "role": "developer"
         }
     ],
@@ -29,13 +29,13 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
-        "php": "~7.4 || ~8.0.1",
+        "php": "~8.0",
 
         "ext-json": "*",
 
         "yiisoft/yii2": "~2.0",
 
-        "dicr/yii2-validate": "~2.3"
+        "dicr/yii2-validate": "~3.0"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",
