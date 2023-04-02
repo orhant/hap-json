@@ -2,7 +2,7 @@
     "name": "orhant/hap-json",
     "type": "yii2-extension",
     "license": "MIT",
-    "description": "Модель данных Json для Yii2",
+    "description": "Json data model for Yii2",
     "keywords": ["hap", "yii2", "json", "entity"],
     "homepage": "https://gitlab.com/orhant/hap-json",
     "support": {
