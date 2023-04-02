@@ -1,16 +1,16 @@
 <?php
 /*
- * @copyright 2019-2020 Dicr http://dicr.org
- * @author Igor A Tarasov <develop@dicr.org>
+ * @copyright 2019-2020 hap http://hap.org
+ * @author Igor A Tarasov <develop@hap.org>
  * @license MIT
  * @version 05.11.20 05:44:22
  */
 
 declare(strict_types = 1);
-namespace dicr\json;
+namespace hap\json;
 
-use dicr\validate\AbstractValidator;
-use dicr\validate\ValidateException;
+use hap\validate\AbstractValidator;
+use hap\validate\ValidateException;
 use yii\base\InvalidConfigException;
 use yii\base\Model;
 

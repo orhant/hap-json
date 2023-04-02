@@ -1,7 +1,7 @@
 <?php
 /*
- * @copyright 2019-2020 Dicr http://dicr.org
- * @author Igor A Tarasov <develop@dicr.org>
+ * @copyright 2019-2020 hap http://hap.org
+ * @author Igor A Tarasov <develop@hap.org>
  * @license MIT
  * @version 10.11.20 02:22:37
  */
@@ -32,7 +32,7 @@ new yii\console\Application([
             ]
         ],
         'urlManager' => [
-            'hostInfo' => 'https://dicr.org'
+            'hostInfo' => 'https://hap.org'
         ]
     ],
     'bootstrap' => ['log']

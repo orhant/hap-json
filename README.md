@@ -13,7 +13,7 @@
 /**
  * Пример модели телефона
  */
-class Phone extends dicr\json\JsonEntity 
+class Phone extends hap\json\JsonEntity 
 {
     /** @var ?int номер телефона */
     public $number;
@@ -51,7 +51,7 @@ class Phone extends dicr\json\JsonEntity
 /**
  * Пример модели пользователя.
  */
-class Customer extends dicr\json\JsonEntity
+class Customer extends hap\json\JsonEntity
 {
     /** @var ?string */
     public $fio;

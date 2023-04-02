@@ -1,14 +1,14 @@
 <?php
 /*
- * @copyright 2019-2020 Dicr http://dicr.org
- * @author Igor A Tarasov <develop@dicr.org>
+ * @copyright 2019-2020 hap http://hap.org
+ * @author Igor A Tarasov <develop@hap.org>
  * @license MIT
  * @version 19.11.20 20:54:49
  */
 
 declare(strict_types = 1);
 
-namespace dicr\json;
+namespace hap\json;
 
 use JsonSerializable;
 use RuntimeException;

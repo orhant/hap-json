@@ -1,29 +1,29 @@
 {
-    "name": "dicr/yii2-json",
+    "name": "hap/yii2-json",
     "type": "yii2-extension",
     "license": "MIT",
     "description": "Модель данных Json для Yii2",
-    "keywords": ["dicr", "yii2", "json", "entity"],
-    "homepage": "https://gitlab.com/dicr/yii2-json",
+    "keywords": ["hap", "yii2", "json", "entity"],
+    "homepage": "https://gitlab.com/orhant/hap-json",
     "support": {
-        "source": "https://gitlab.com/dicr/yii2-json.git"
+        "source": "https://gitlab.com/orhant/hap-json.git"
     },
     "authors": [
         {
-            "name": "Igor Tarasov",
-            "email": "develop@dicr.org",
-            "homepage": "https://dicr.org",
+            "name": "ORhan t",
+            "email": "orhant@hap.org",
+            "homepage": "https://hap.org",
             "role": "developer"
         }
     ],
     "autoload": {
         "psr-4": {
-            "dicr\\json\\": "src/"
+            "hap\\json\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "dicr\\tests\\": "tests/"
+            "hap\\tests\\": "tests/"
         }
     },
     "minimum-stability": "stable",
@@ -35,7 +35,7 @@
 
         "yiisoft/yii2": "~2.0",
 
-        "dicr/yii2-validate": "~3.0"
+        "hap/yii2-validate": "~3.0"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",
@@ -43,6 +43,6 @@
     },
     "repositories": [
         {"type": "composer", "url": "https://asset-packagist.org"},
-        {"type": "gitlab", "url": "https://gitlab.com/dicr/yii2-validate.git"}
+        {"type": "gitlab", "url": "https://gitlab.com/hap/yii2-validate.git"}
     ]
 }

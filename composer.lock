@@ -146,16 +146,16 @@
             "time": "2018-03-26T11:24:36+00:00"
         },
         {
-            "name": "dicr/yii2-validate",
+            "name": "hap/yii2-validate",
             "version": "3.0.0",
             "source": {
                 "type": "git",
-                "url": "https://gitlab.com/dicr/yii2-validate.git",
+                "url": "https://gitlab.com/hap/yii2-validate.git",
                 "reference": "523b231e58a5bc3a88ac2f700f53df9a85f6187a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-validate/repository/archive.zip?sha=523b231e58a5bc3a88ac2f700f53df9a85f6187a",
+                "url": "https://gitlab.com/api/v4/projects/hap%2Fyii2-validate/repository/archive.zip?sha=523b231e58a5bc3a88ac2f700f53df9a85f6187a",
                 "reference": "523b231e58a5bc3a88ac2f700f53df9a85f6187a",
                 "shasum": ""
             },
@@ -170,12 +170,12 @@
             "type": "yii2-extension",
             "autoload": {
                 "psr-4": {
-                    "dicr\\validate\\": "src/"
+                    "hap\\validate\\": "src/"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "dicr\\tests\\": "tests/"
+                    "hap\\tests\\": "tests/"
                 }
             },
             "license": [
@@ -184,20 +184,20 @@
             "authors": [
                 {
                     "name": "Igor Tarasov",
-                    "email": "develop@dicr.org",
-                    "homepage": "https://dicr.org",
+                    "email": "develop@hap.org",
+                    "homepage": "https://hap.org",
                     "role": "developer"
                 }
             ],
             "description": "Компоненты парсинга и валидации данных для Yii2",
-            "homepage": "https://gitlab.com/dicr/yii2-validate",
+            "homepage": "https://gitlab.com/hap/yii2-validate",
             "keywords": [
-                "dicr",
+                "hap",
                 "validate",
                 "yii2"
             ],
             "support": {
-                "source": "https://gitlab.com/dicr/yii2-validate.git"
+                "source": "https://gitlab.com/hap/yii2-validate.git"
             },
             "time": "2022-01-04T23:56:46+03:00"
         },
