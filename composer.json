@@ -1,5 +1,5 @@
 {
-    "name": "hap/yii2-json",
+    "name": "orhant/hap-json",
     "type": "yii2-extension",
     "license": "MIT",
     "description": "Модель данных Json для Yii2",
@@ -10,7 +10,7 @@
     },
     "authors": [
         {
-            "name": "ORhan t",
+            "name": "Orhan t",
             "email": "orhant@hap.org",
             "homepage": "https://hap.org",
             "role": "developer"
